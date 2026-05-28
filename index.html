@@ -78,11 +78,11 @@ http://www.tooplate.com/view/2102-constructive
 								</a>
 							</li>
 							<li>
-                                <a onclick="window.location.href='login/index.html'">
-                                   <i class="fas fa-user tm-nav-fa-icon"></i>
-                                   <span>Login</span>
-                                </a>
-                            </li>
+    							<a id="authButton">
+       								<i class="fas fa-user tm-nav-fa-icon"></i>
+       								<span id="authText">Login</span>
+    							</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
@@ -385,5 +385,27 @@ Jika kamu juga punya pengalaman seru saat menonton konser, jangan ragu untuk mem
 		});
 
 		</script>
+	<script>
+    // cek status login 
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    const authButton = document.getElementById("authButton");
+    const authText = document.getElementById("authText");
+
+    if (isLoggedIn === "true") {
+        authText.innerText = "Logout";
+
+        authButton.onclick = function () {
+            localStorage.removeItem("isLoggedIn");
+            window.location.reload();
+        };
+    } else {
+        authText.innerText = "Login";
+
+        authButton.onclick = function () {
+            window.location.href = "login/index.html";
+        };
+    }
+	</script>
 	</body>
 </html>
