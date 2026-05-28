@@ -30,12 +30,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const data = await res.json();
 
-            if (data.status === "success") {
-                localStorage.setItem("username", data.username);
-                window.location.href = "../index.html";
-            } else {
-                showAlert("Username atau Password salah!");
-            }
+        if (data.status === "success") {
+
+            // simpan status login
+            localStorage.setItem("isLoggedIn", "true");
+
+            // simpan username
+            localStorage.setItem("username", data.username);
+
+            // redirect ke halaman utama
+            window.location.href = "../index.html";
+
+        }
         } catch (error) {
             console.error(error);
             showAlert("Gagal koneksi ke server. Coba lagi.");
