@@ -385,27 +385,33 @@ Jika kamu juga punya pengalaman seru saat menonton konser, jangan ragu untuk mem
 		});
 
 		</script>
-	<script>
-    // cek status login 
+<script>
     const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const username = localStorage.getItem("username");
 
     const authButton = document.getElementById("authButton");
     const authText = document.getElementById("authText");
 
     if (isLoggedIn === "true") {
-        authText.innerText = "Logout";
+
+        authText.innerText = "Logout (" + username + ")";
 
         authButton.onclick = function () {
+
             localStorage.removeItem("isLoggedIn");
+            localStorage.removeItem("username");
+
             window.location.reload();
         };
+
     } else {
+
         authText.innerText = "Login";
 
         authButton.onclick = function () {
             window.location.href = "login/index.html";
         };
     }
-	</script>
+</script>
 	</body>
 </html>
